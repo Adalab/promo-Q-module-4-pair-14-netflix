@@ -14,7 +14,7 @@ server.listen(serverPort, () => {
 });
 
 server.get('/movies', (req, resp)=>{
-  console.log(req.query);
+ console.log(req.query);
   const gender = req.query.gender;
   
   resp.json({
@@ -22,6 +22,10 @@ server.get('/movies', (req, resp)=>{
     success: true
   })
 });
+
+server.get('/contact', (req, res) =>{
+  console.log("hola");
+})
 
 const staticServer ='./public-react'
 server.use(express.static(staticServer));
