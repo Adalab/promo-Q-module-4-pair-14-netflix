@@ -22,3 +22,6 @@ server.get('/movies', (req, resp)=>{
     success: true
   })
 });
+
+const staticServer ='./public-react'
+server.use(express.static(staticServer));
