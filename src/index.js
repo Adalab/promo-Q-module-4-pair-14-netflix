@@ -14,18 +14,20 @@ server.listen(serverPort, () => {
 });
 
 server.get('/movies', (req, resp)=>{
- console.log(req.query);
+  console.log(req.query);
+  console.log('holaaa');
   const gender = req.query.gender;
-  
-  resp.json({
-    movies,
-    success: true
-  })
+  const filterByGender= movies.filter((movie) =>{movie.gender === gender
+  });
+  console.log(filterByGender);
+    
+  const response ={
+    success: true,
+    movies: filterByGender,
+  }
+  console.log(response);
+  resp.json(response)
 });
 
-server.get('/contact', (req, res) =>{
-  console.log("hola");
-})
-
-const staticServer ='./public-react'
+const staticServer ='./src/public-react'
 server.use(express.static(staticServer));
