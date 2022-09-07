@@ -14,18 +14,17 @@ server.listen(serverPort, () => {
 });
 
 server.get('/movies', (req, resp)=>{
-  console.log(req.query);
-  console.log('holaaa');
   const gender = req.query.gender;
-  const filterByGender= movies.filter((movie) =>{movie.gender === gender
-  });
+  console.log(gender);
+  const sort = req.query.sort;
+  const filterByGender= movies.filter((movie) =>{ return movie.gender.includes(gender)});
+  
   console.log(filterByGender);
     
   const response ={
     success: true,
     movies: filterByGender,
   }
-  console.log(response);
   resp.json(response)
 });
 
