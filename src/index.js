@@ -28,5 +28,13 @@ server.get('/movies', (req, resp)=>{
   resp.json(response)
 });
 
+server.get('/movies/:movieId', (req, res) =>{
+  console.log(req.params.movieId);
+  const moviesData = movies.find((oneMovie)=> oneMovie.id === req.params.movieId);
+});
+
+
+
 const staticServer ='./src/public-react'
 server.use(express.static(staticServer));
+
