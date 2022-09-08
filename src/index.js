@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const movies = require('./data/movies.json');
 const Database = require('better-sqlite3')
-const db = new Database ('./databse.db', { verbose : console.log})
+const db = new Database ('./src/database.db', { verbose: console.log })
 
 // create and config server
 const server = express();
@@ -16,20 +16,34 @@ server.listen(serverPort, () => {
 });
 
 
-
-
-
 server.get('/movies', (req, resp)=>{
 
- /* const query = db.prepare(
-    `SELECT id, name, gender, image
-    FROM movies`
-  );
+  const query = db.prepare(`
+  SELECT id, name, gender, image
+  FROM movies
+  `);
 
-  console.log(query);*/
+  const allMovies = query.all();
   
-   const gender = req.query.gender;
-   console.log(gender);
+  const response ={
+    sucess: true,
+    movies: allMovies
+  }
+  resp.json(response);
+
+  const queryGender = db.prepare(`
+  SELECT id, name, gender, image
+  FROM movies
+  WHERE gender =?`)
+  
+  const gender = req.query.gender;
+  
+  const movieGender = queryGender.all(gender)
+
+
+   
+
+   /*console.log(gender);
    const sort = req.query.sort;
    const filterByGender= movies.filter((movie) =>{ return movie.gender.includes(gender)});
   
@@ -39,7 +53,8 @@ server.get('/movies', (req, resp)=>{
      success: true,
      movies: filterByGender,
    }
-   resp.json(response)
+   resp.json(response)*/
+
 });
 
 server.get('/movies/:movieId', (req, res) =>{
