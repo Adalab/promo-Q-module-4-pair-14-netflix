@@ -30,3 +30,7 @@ server.get('/movies', (req, resp)=>{
 
 const staticServer ='./src/public-react'
 server.use(express.static(staticServer));
+
+//servidor estáticos fotos
+const staticServerImg = './src/public-movies-images'
+server.use(express.static(staticServerImg));
