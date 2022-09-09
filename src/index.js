@@ -62,6 +62,10 @@ server.get('/movies/:movieId', (req, res) =>{
   const moviesData = movies.find((oneMovie)=> oneMovie.id === req.params.movieId);
 });
 
+server.post ('/login', (req, res) => {
+  console.log('Query params:', req.query);
+})
+
 
 
 const staticServer ='./src/public-react'
