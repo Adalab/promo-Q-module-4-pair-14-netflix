@@ -8,6 +8,7 @@ const db = new Database ('./src/database.db', { verbose: console.log })
 const server = express();
 server.use(cors());
 server.use(express.json());
+server.set('view engine', 'ejs')
 
 // init express aplication
 const serverPort = 4000;
@@ -38,8 +39,6 @@ server.get('/movies', (req, resp)=>{
 
   const movies = gender === '' ? allMovies : genderFilter
 
-  console.log(sortFilter);
-
   const response ={
     sucess: true,
     movies: movies
@@ -66,13 +65,24 @@ server.post('/login', (req, resp) => {
 
 
 server.get('/movies/:movieId', (req, res) =>{
-  console.log(req.params.movieId);
-  const moviesData = movies.find((oneMovie)=> oneMovie.id === req.params.movieId);
+
+
+  const queryId = db.prepare(`
+  SELECT id
+  FROM movies`)
+
+  const movieId = queryId.get()
+
+  console.log(movieId);
+
+  res.render('movie', movieId)
 });
 
-server.post ('/login', (req, res) => {
-  console.log('Query params:', req.query);
-})
+
+
+// server.post ('/login', (req, res) => {
+//   console.log('Query params:', req.query);
+// })
 
 
 
