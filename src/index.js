@@ -1,7 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const movies = require('./data/movies.json');
-const Database = require('better-sqlite3')
+const users = require('./data/users.json');
+const Database = require('better-sqlite3');
 const db = new Database ('./src/database.db', { verbose: console.log })
 
 // create and config server
@@ -15,7 +16,7 @@ server.listen(serverPort, () => {
   console.log(`Server listening at http://localhost:${serverPort}`);
 });
 
-
+// endpoint movies
 server.get('/movies', (req, resp)=>{
 
   const query = db.prepare(`
@@ -56,6 +57,22 @@ server.get('/movies', (req, resp)=>{
    resp.json(response)*/
 
 });
+
+// endpoint login
+server.post('/login', (req, resp) => {
+  console.log(req.body);
+  const oneUser = users
+    .find((user) => user.email === req.body.email)
+    .find((user) => user.password === req.body.password);
+    if(oneUser){
+      resp.json({ "success": true,
+      "userId": "id_de_la_usuaria_encontrada" });
+    } else {
+      resp.json({ "success": false,
+      "errorMessage": "Usuaria/o no encontrada/o" })
+    }
+});
+
 
 server.get('/movies/:movieId', (req, res) =>{
   console.log(req.params.movieId);

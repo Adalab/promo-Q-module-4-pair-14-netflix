@@ -3,7 +3,7 @@
 const sendLoginToApi = data => {
     console.log('Se están enviando datos al login:', data);
     // CAMBIA ESTE FETCH PARA QUE APUNTE A UN ENDPOINT DE TU SERVIDOR, PIENSA SI DEBE SER GET O POST, PIENSA QUÉ DATOS DEBES ENVIAR, ETC
-    return fetch('//beta.adalab.es/curso-intensivo-fullstack-recursos/apis/netflix-v1/empty.json', {
+    return fetch(`http://localhost:4000/login/?email=${data.email}&password=${data.password}`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
