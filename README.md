@@ -46,10 +46,10 @@ Por favor marca a continuación los ejericios que hayais terminado:
   4.4 Express JS III:
 
 - [x] 1. Obtener el id de la película a renderizar
-- [ ] 2. Obtener la película
+- [x] 2. Obtener la película
 - [ ] 3. Renderiza una página cualquiera
-- [ ] 4. Renderiza la película
-- [ ] 5. Añade estilos
+- [x] 4. Renderiza la película
+- [x] 5. Añade estilos
 
   4.5 Bases de datos I:
 
@@ -57,7 +57,7 @@ Por favor marca a continuación los ejericios que hayais terminado:
 - [x] 2. Configura la base de datos en Node JS
 - [x] 3. Haz un SELECT para obtener todas películas
 - [ ] 4. Mejora tu SELECT
-- [ ] 5. SELECT para el motor de plantillas
+- [x] 5. SELECT para el motor de plantillas
 - [ ] 6. Crear la tabla de usuarias
 
   4.6 Bases de datos I:
@@ -72,7 +72,7 @@ Por favor marca a continuación los ejericios que hayais terminado:
 
   4.7 Bases de datos I:
 
-- [ ] 1. Pensar qué relación es
+- [x] 1. Pensar qué relación es
 - [ ] 2. Crear una relación N a N
 - [ ] 3. Crear el endpoint en el front
 - [ ] 4. Crear el endpoint en el back
